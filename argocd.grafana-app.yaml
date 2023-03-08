@@ -17,7 +17,6 @@ spec:
       - $values/grafana.values.yaml
   - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
     targetRevision: HEAD
-    path: ./
     ref: values
   syncPolicy:
     syncOptions:
