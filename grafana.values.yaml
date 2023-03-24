@@ -9,3 +9,4 @@ ingress:
   hosts:
     - "argocd.fabrice.local"
   path: "/grafana"
+adminPassword: "password"
