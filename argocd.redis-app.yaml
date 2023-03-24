@@ -4,7 +4,7 @@ metadata:
   name: redis
   namespace: default
   annotations:
-    notifications.argoproj.io/subscribe.redis.grafana:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.grafana:
 spec:
   destination:
     namespace: redis
