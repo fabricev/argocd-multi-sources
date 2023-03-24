@@ -7,9 +7,10 @@ server:
     hosts:
       - argocd.fabrice.local
 notifications:
+  argocdUrl: "https://argocd.fabrice.local/"
   secret:
     items:
-      grafana-api-key: ZXlKcklqb2lSR3RaUkZCTldXbHdiM2g1TVRsTGNrUnhTbGN3Tm5oSU9HZExlVmhIVW1VaUxDSnVJam9pWVhKbmIyTmtJaXdpYVdRaU9qRjk=
+      grafana-api-key: eyJrIjoiTUhwTmhXWlIxd2NYdlRLb0ZZQUFuWDl3SzNxeFJjbXIiLCJuIjoidGVzdCIsImlkIjoxfQ==
   notifiers:
     service.grafana: |
         apiUrl: http://grafana.grafana.svc/api
