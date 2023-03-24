@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: default
+spec:
+  destination:
+    namespace: prometheus
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: kube-prometheus-stack
+    repoURL: 'https://prometheus-community.github.io/helm-charts'
+    targetRevision: 45.7.1
+    helm:
+      valueFiles:
+      - $values/prometheus.values.yaml
+  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

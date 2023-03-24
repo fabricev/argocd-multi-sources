@@ -1,0 +1,6 @@
+defaultRules:
+  create: false
+alertmanager:
+  create: false
+grafana:
+  enabled: false
