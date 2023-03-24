@@ -4,7 +4,8 @@ helm upgrade --install my-argo-cd argo/argo-cd --version 5.27.3 -f argocd.values
 
 Create the repo
 
-```yaml
+```shell
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -19,10 +20,12 @@ data:
   url: aHR0cHM6Ly9naXRodWIuY29tL2ZhYnJpY2V2L2FyZ29jZC1tdWx0aS1zb3VyY2VzLmdpdA==
   username: ZmFicmljZXY=
 type: Opaque
+EOF
 ```
 
 Create the app
-```yaml
+```shell
+cat <<EOF | kubectl apply -f -
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -41,6 +44,7 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
+EOF
 ```
 
 Create the repo
