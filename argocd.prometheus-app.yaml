@@ -13,9 +13,9 @@ spec:
     repoURL: 'https://prometheus-community.github.io/helm-charts'
     targetRevision: 45.7.1
     helm:
+      skipCrds: true
       valueFiles:
       - $values/prometheus.values.yaml
-    skipCrds: true
   - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
     targetRevision: HEAD
     ref: values
