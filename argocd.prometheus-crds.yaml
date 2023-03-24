@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: prometheus-crds
   namespace: default
 spec:
   destination:
@@ -9,16 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: kube-prometheus-stack
+  - chart: prometheus-operator-crds
     repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: 45.7.1
-    helm:
-      valueFiles:
-      - $values/prometheus.values.yaml
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    ref: values
+    targetRevision: 2.0.0
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-  skipCrds: true
