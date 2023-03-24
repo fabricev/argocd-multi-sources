@@ -3,6 +3,7 @@ grafana.ini:
     domain: argocd.fabrice.local
     root_url: "%(protocol)s://%(domain)s/grafana"
     serve_from_sub_path: true
+  feature_toggles: topnav,newPanelChromeUI
 ingress:
   enabled: true
   hosts:
