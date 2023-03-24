@@ -4,7 +4,7 @@ metadata:
   name: redis
   namespace: argocd
   annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.grafana:
+    notifications.argoproj.io/subscribe.app-deployed.grafana:
 spec:
   destination:
     namespace: redis
