@@ -7,6 +7,9 @@ grafana.ini:
     enable: topnav,newPanelChromeUI
   external_image_storage:
     provider: local
+  unified_alerting.screenshots:
+    capture: true
+    upload_external_image_storage: true
 ingress:
   enabled: true
   hosts:
