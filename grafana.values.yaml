@@ -5,6 +5,8 @@ grafana.ini:
     serve_from_sub_path: true
   feature_toggles: 
     enable: topnav,newPanelChromeUI
+  external_image_storage:
+    provider: local
 ingress:
   enabled: true
   hosts:
