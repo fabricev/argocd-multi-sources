@@ -5,6 +5,8 @@ grafana.ini:
     serve_from_sub_path: true
   #feature_toggles: 
   #  enable: topnav,newPanelChromeUI
+  users:
+    default_theme: light
   external_image_storage:
     provider: local
   unified_alerting.screenshots:
