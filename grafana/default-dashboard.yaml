@@ -409,7 +409,7 @@ data:
                   "mode": "none"
                 },
                 "thresholdsStyle": {
-                  "mode": "line"
+                  "mode": "dashed"
                 }
               },
               "mappings": [],
@@ -485,13 +485,13 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-3h",
         "to": "now"
       },
       "timepicker": {},
       "timezone": "",
-      "title": "New dashboard",
-      "uid": "a3tMK5f4z",
-      "version": 14,
+      "title": "Default Dashboard",
+      "uid": "default-dashboard",
+      "version": 1,
       "weekStart": ""
     }
