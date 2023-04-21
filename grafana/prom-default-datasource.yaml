@@ -8,6 +8,7 @@ data:
   datasource-prometheus.yaml: |-
     apiVersion: 1
     datasources:
-      - name: New Prometheus 
+      - name: Prometheus 
         type: prometheus
+        isDefault: true
         url: http://prometheus-operated.prometheus.svc:9090
