@@ -9,6 +9,7 @@ data:
     apiVersion: 1
     datasources:
       - name: Prometheus 
+        uid: default-prometheus
         type: prometheus
         isDefault: true
         url: http://prometheus-operated.prometheus.svc:9090
