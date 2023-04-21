@@ -11,13 +11,16 @@ spec:
   sources:
   - chart: grafana
     repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: 6.52.4
+    targetRevision: 6.54.0
     helm:
       valueFiles:
       - $values/grafana.values.yaml
   - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
     targetRevision: HEAD
     ref: values
+  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
+    targetRevision: HEAD
+    path: grafana/
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

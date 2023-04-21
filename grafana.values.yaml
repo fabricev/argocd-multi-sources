@@ -3,8 +3,8 @@ grafana.ini:
     domain: argocd.fabrice.local
     root_url: "%(protocol)s://%(domain)s/grafana"
     serve_from_sub_path: true
-  feature_toggles: 
-    enable: topnav,newPanelChromeUI
+  #feature_toggles: 
+  #  enable: topnav,newPanelChromeUI
   external_image_storage:
     provider: local
   unified_alerting.screenshots:
@@ -21,4 +21,4 @@ imageRenderer:
 sidecar:
   datasources:
     enabled: true
-    label: grafana-ds
+    label: grafana_datasource
