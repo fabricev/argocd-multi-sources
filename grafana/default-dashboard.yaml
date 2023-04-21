@@ -1,0 +1,497 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-main-dashboard
+  labels:
+     grafana_dashboard: "true"
+data:
+  default_dashboard.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": false,
+            "iconColor": "blue",
+            "name": "Annotations & Alerts",
+            "target": {
+              "limit": 100,
+              "matchAny": true,
+              "tags": [],
+              "type": "tags"
+            },
+            "type": "dashboard"
+          }
+        ]
+      },
+      "description": "Test",
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": 1,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "description": "Test desc",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "decimals": 2,
+              "mappings": [],
+              "min": 0
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 3,
+            "x": 0,
+            "y": 0
+          },
+          "id": 4,
+          "interval": "1m",
+          "links": [
+            {
+              "title": "Test link",
+              "url": "https://argocd.fabrice.local"
+            }
+          ],
+          "maxDataPoints": 200,
+          "options": {
+            "displayLabels": [
+              "name",
+              "value"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum by(namespace) (rate(container_cpu_usage_seconds_total{container!=\"\"}[$__rate_interval]))",
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Namespace CPU usage",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "description": "Test desc",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "min": 0,
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 3,
+            "x": 3,
+            "y": 0
+          },
+          "id": 5,
+          "interval": "1m",
+          "links": [
+            {
+              "title": "Test link",
+              "url": "https://argocd.fabrice.local"
+            }
+          ],
+          "maxDataPoints": 200,
+          "options": {
+            "displayLabels": [
+              "name",
+              "value"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum by(namespace) (container_memory_usage_bytes{container!=\"\"})",
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "expr": "contaoi",
+              "hide": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "Namespace Memory usage",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 7,
+            "y": 0
+          },
+          "id": 11,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "",
+            "dashboardAlerts": false,
+            "folder": {
+              "title": "Alerts",
+              "uid": "ucCm5cL4k"
+            },
+            "groupBy": [
+              "alertname"
+            ],
+            "groupMode": "custom",
+            "maxItems": 20,
+            "sortOrder": 1,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "title": "Alerts",
+          "transparent": true,
+          "type": "alertlist"
+        },
+        {
+          "collapsed": false,
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "id": 9,
+          "panels": [],
+          "title": "History",
+          "type": "row"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "description": "Test desc",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 5,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 3,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 17,
+            "w": 12,
+            "x": 0,
+            "y": 11
+          },
+          "id": 2,
+          "interval": "1m",
+          "links": [
+            {
+              "title": "Test link",
+              "url": "https://argocd.fabrice.local"
+            }
+          ],
+          "maxDataPoints": 200,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "9.4.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum by(namespace) (rate(container_cpu_usage_seconds_total{container!=\"\"}[$__rate_interval]))",
+              "format": "time_series",
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Namespace CPU usage",
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "description": "Test desc",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 5,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 3,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "line"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 1000000000
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 17,
+            "w": 12,
+            "x": 12,
+            "y": 11
+          },
+          "id": 3,
+          "interval": "1m",
+          "links": [
+            {
+              "title": "Test link",
+              "url": "https://argocd.fabrice.local"
+            }
+          ],
+          "maxDataPoints": 200,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum by(namespace) (container_memory_usage_bytes{container!=\"\"})",
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Namespace Memory usage",
+          "transparent": true,
+          "type": "timeseries"
+        }
+      ],
+      "refresh": "5s",
+      "revision": 1,
+      "schemaVersion": 38,
+      "style": "light",
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "New dashboard",
+      "uid": "a3tMK5f4z",
+      "version": 14,
+      "weekStart": ""
+    }
