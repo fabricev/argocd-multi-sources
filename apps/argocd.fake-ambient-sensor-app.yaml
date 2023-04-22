@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fake-ambient-sensor
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-deployed.grafana: deployed
+    notifications.argoproj.io/subscribe.on-sync-running.grafana: running
+    notifications.argoproj.io/subscribe.on-sync-succeeded.grafana: synched
+spec:
+  destination:
+    namespace: kitchen
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: fake-ambient-sensor
+    repoURL: 'oci://registry.localhost:5000/helm-charts'
+    targetRevision: 0.1.26
+    helm:
+      valueFiles:
+      - $values/kitchen.values.yaml
+  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+localhost:5000/helm-charts/fake-ambient-sensor:0.1.26
