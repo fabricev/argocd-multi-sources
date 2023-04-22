@@ -25,5 +25,3 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-
-localhost:5000/helm-charts/fake-ambient-sensor:0.1.26
