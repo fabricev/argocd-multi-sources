@@ -14,7 +14,7 @@ spec:
   project: default
   sources:
   - chart: fake-ambient-sensor
-    repoURL: 'oci://registry.localhost:5000/helm-charts'
+    repoURL: 'registry.localhost:5000/helm-charts'
     targetRevision: 0.1.52
     helm:
       valueFiles:
