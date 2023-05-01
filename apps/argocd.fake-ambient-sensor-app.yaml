@@ -15,7 +15,7 @@ spec:
   sources:
   - chart: fake-ambient-sensor
     repoURL: 'oci://registry.localhost:5000/helm-charts'
-    targetRevision: 0.1.51
+    targetRevision: 0.1.52
     helm:
       valueFiles:
       - $values/kitchen.values.yaml
