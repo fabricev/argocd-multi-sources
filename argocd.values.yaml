@@ -8,6 +8,10 @@ server:
       - argocd.fabrice.local
     annotations:
       cert-manager.io/issuer: "my-ca-issuer"
+    tls:
+      - hosts:
+        - argocd.fabrice.local
+        secretName: quickstart-example-tls
 notifications:
   argocdUrl: "https://argocd.fabrice.local/"
   secret:
