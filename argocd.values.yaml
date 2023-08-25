@@ -6,6 +6,8 @@ server:
     enabled: true
     hosts:
       - argocd.fabrice.local
+    annotations:
+      cert-manager.io/issuer: "my-ca-issuer"
 notifications:
   argocdUrl: "https://argocd.fabrice.local/"
   secret:

@@ -17,6 +17,8 @@ ingress:
   hosts:
     - "argocd.fabrice.local"
   path: "/grafana"
+  annotations:
+    cert-manager.io/issuer: "my-ca-issuer"
 adminPassword: "password"
 imageRenderer:
   enabled: true
