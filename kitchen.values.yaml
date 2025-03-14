@@ -1,3 +1,4 @@
 podAnnotations:
   fake-ambient-sensor/location: kitchen
   test: true
+  another: false
