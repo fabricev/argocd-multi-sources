@@ -9,18 +9,18 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: grafana
-    repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: 6.58.6
-    helm:
-      valueFiles:
-      - $values/grafana.values.yaml
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    ref: values
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    path: grafana/
+    - chart: grafana
+      repoURL: "https://grafana.github.io/helm-charts"
+      targetRevision: 8.12.1
+      helm:
+        valueFiles:
+          - $values/grafana.values.yaml
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      ref: values
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      path: grafana/
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
