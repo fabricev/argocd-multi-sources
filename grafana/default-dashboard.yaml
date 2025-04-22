@@ -3,9 +3,10 @@ kind: ConfigMap
 metadata:
   name: grafana-main-dashboard
   labels:
-     grafana_dashboard: "true"
+    grafana_dashboard: "true"
 data:
-  default_dashboard.json: |-
+  default_dashboard.json:
+    |-
     {
       "annotations": {
         "list": [
@@ -35,7 +36,6 @@ data:
       "graphTooltip": 0,
       "id": 1,
       "links": [],
-      "liveNow": false,
       "panels": [
         {
           "datasource": {
@@ -95,10 +95,12 @@ data:
               "values": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
+          "pluginVersion": "11.6.0",
           "targets": [
             {
               "datasource": {
@@ -177,10 +179,12 @@ data:
               "values": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
+          "pluginVersion": "11.6.0",
           "targets": [
             {
               "datasource": {
@@ -213,9 +217,9 @@ data:
           "type": "piechart"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "default-prometheus"
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -237,6 +241,7 @@ data:
             ],
             "groupMode": "custom",
             "maxItems": 20,
+            "showInactiveAlerts": false,
             "sortOrder": 1,
             "stateFilter": {
               "error": true,
@@ -247,6 +252,7 @@ data:
             },
             "viewMode": "list"
           },
+          "pluginVersion": "11.6.0",
           "title": "Alerts",
           "transparent": true,
           "type": "alertlist"
@@ -276,11 +282,13 @@ data:
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
                 "fillOpacity": 5,
                 "gradientMode": "none",
@@ -289,6 +297,7 @@ data:
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "smooth",
                 "lineWidth": 3,
                 "pointSize": 5,
@@ -311,8 +320,7 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -346,11 +354,12 @@ data:
               "showLegend": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
-          "pluginVersion": "9.4.3",
+          "pluginVersion": "11.6.0",
           "targets": [
             {
               "datasource": {
@@ -383,21 +392,24 @@ data:
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
+                "barWidthFactor": 0.6,
                 "drawStyle": "line",
-                "fillOpacity": 5,
+                "fillOpacity": 15,
                 "gradientMode": "none",
                 "hideFrom": {
                   "legend": false,
                   "tooltip": false,
                   "viz": false
                 },
+                "insertNulls": false,
                 "lineInterpolation": "smooth",
-                "lineWidth": 3,
+                "lineWidth": 1,
                 "pointSize": 5,
                 "scaleDistribution": {
                   "type": "linear"
@@ -406,7 +418,7 @@ data:
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
-                  "mode": "none"
+                  "mode": "normal"
                 },
                 "thresholdsStyle": {
                   "mode": "dashed"
@@ -418,8 +430,7 @@ data:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -445,7 +456,7 @@ data:
               "url": "https://argocd.fabrice.local"
             }
           ],
-          "maxDataPoints": 200,
+          "maxDataPoints": 240,
           "options": {
             "legend": {
               "calcs": [],
@@ -454,10 +465,12 @@ data:
               "showLegend": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
+          "pluginVersion": "11.6.0",
           "targets": [
             {
               "datasource": {
@@ -476,10 +489,9 @@ data:
           "type": "timeseries"
         }
       ],
+      "preload": false,
       "refresh": "5s",
-      "revision": 1,
-      "schemaVersion": 38,
-      "style": "light",
+      "schemaVersion": 41,
       "tags": [],
       "templating": {
         "list": []
@@ -492,6 +504,5 @@ data:
       "timezone": "",
       "title": "Default Dashboard",
       "uid": "default-dashboard",
-      "version": 1,
-      "weekStart": ""
+      "version": 1
     }
