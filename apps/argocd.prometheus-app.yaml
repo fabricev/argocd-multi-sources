@@ -9,16 +9,18 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: kube-prometheus-stack
-    repoURL: 'https://prometheus-community.github.io/helm-charts'
-    targetRevision: 48.2.1
-    helm:
-      skipCrds: true
-      valueFiles:
-      - $values/prometheus.values.yaml
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    ref: values
+    - chart: kube-prometheus-stack
+      repoURL: "https://prometheus-community.github.io/helm-charts"
+      targetRevision: 48.2.1
+      helm:
+        skipCrds: true
+        valueFiles:
+          - $values/prometheus.values.yaml
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
+    automated:
+      {}
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true

@@ -13,15 +13,17 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: fake-ambient-sensor
-    repoURL: 'registry.localhost:5000/helm-charts'
-    targetRevision: 0.1.52
-    helm:
-      valueFiles:
-      - $values/kitchen.values.yaml
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    ref: values
+    - chart: fake-ambient-sensor
+      repoURL: "registry.localhost:5000/helm-charts"
+      targetRevision: 0.1.52
+      helm:
+        valueFiles:
+          - $values/kitchen.values.yaml
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
+    automated:
+      {}
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true

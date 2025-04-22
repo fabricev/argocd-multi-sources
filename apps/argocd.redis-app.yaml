@@ -13,15 +13,17 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: redis
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 17.9.0
-    helm:
-      valueFiles:
-      - $values/redis.values.yaml
-  - repoURL: 'https://github.com/fabricev/argocd-multi-sources.git'
-    targetRevision: HEAD
-    ref: values
+    - chart: redis
+      repoURL: "https://charts.bitnami.com/bitnami"
+      targetRevision: 17.9.0
+      helm:
+        valueFiles:
+          - $values/redis.values.yaml
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
+    automated:
+      {}
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
