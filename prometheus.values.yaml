@@ -1,6 +1,6 @@
 defaultRules:
-  create: false
+  create: true
 alertmanager:
-  create: false
+  create: true
 grafana:
   enabled: false
