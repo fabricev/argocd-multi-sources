@@ -2,5 +2,14 @@ defaultRules:
   create: true
 alertmanager:
   create: true
+  ingress:
+    enabled: true
+    hosts:
+      - "argocd.fabrice.local"
+    tls:
+      - hosts:
+          - argocd.fabrice.local
+        secretName: quickstart-example-tls-alertmanager
+    path: "/alertmanager"
 grafana:
   enabled: false
