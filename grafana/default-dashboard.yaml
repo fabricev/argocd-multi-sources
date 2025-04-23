@@ -5,7 +5,7 @@ metadata:
   labels:
     grafana_dashboard: "true"
 data:
-  nodes_dashboard.json:
+  node_dashboard.json:
     |-
     {
       "annotations": {
@@ -27,9 +27,113 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 2,
+      "id": 3,
       "links": [],
       "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "default-prometheus"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 32,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "cpu"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "id": 3,
+          "maxDataPoints": 200,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.6.0",
+          "repeat": "node",
+          "repeatDirection": "h",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "expr": "  label_replace(sum(rate(node_cpu_seconds_total[$__rate_interval])) by (mode,instance), \"instance\", \"$1\", \"instance\", \"(.*):(.*)\")\n  * on (instance)\n  group_left(node)\n  label_replace(kube_node_info{node=\"$node\"}, \"instance\", \"$1\", \"internal_ip\", \"(.*)\")",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{mode}}",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "CPU $node",
+          "transparent": true,
+          "type": "timeseries"
+        },
         {
           "datasource": {
             "type": "prometheus",
@@ -108,10 +212,10 @@ data:
             ]
           },
           "gridPos": {
-            "h": 8,
+            "h": 12,
             "w": 24,
             "x": 0,
-            "y": 0
+            "y": 14
           },
           "id": 2,
           "maxDataPoints": 100,
@@ -174,9 +278,7 @@ data:
           {
             "allowCustomValue": false,
             "current": {
-              "text": [
-                "All"
-              ],
+              "text": "All",
               "value": [
                 "$__all"
               ]
@@ -205,9 +307,9 @@ data:
       },
       "timepicker": {},
       "timezone": "browser",
-      "title": "Nodes",
-      "uid": "eejqfcethdbeod",
-      "version": 4
+      "title": "Nodes Copy",
+      "uid": "fejqiduoguznkd",
+      "version": 2
     }
   default_dashboard.json:
     |-
