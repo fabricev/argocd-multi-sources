@@ -1,1 +1,4 @@
 # Empty
+crds:
+  enabled: true
+  keep: true
