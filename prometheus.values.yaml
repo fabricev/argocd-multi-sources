@@ -12,5 +12,16 @@ alertmanager:
         secretName: quickstart-example-tls-alertmanager
     paths:
       - /
+prometheus:
+  ingress:
+    enabled: true
+    hosts:
+      - "prometheus.fabrice.local"
+    tls:
+      - hosts:
+          - prometheus.fabrice.local
+        secretName: quickstart-example-tls-alertmanager
+    paths:
+      - /
 grafana:
   enabled: false
