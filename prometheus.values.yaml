@@ -8,9 +8,9 @@ alertmanager:
       - "argocd.fabrice.local"
     tls:
       - hosts:
-          - argocd.fabrice.local
+          - alertmanager.fabrice.local
         secretName: quickstart-example-tls-alertmanager
     paths:
-      - /alertmanager
+      - /
 grafana:
   enabled: false
