@@ -5,7 +5,7 @@ alertmanager:
   ingress:
     enabled: true
     hosts:
-      - "argocd.fabrice.local"
+      - "alertmanager.fabrice.local"
     tls:
       - hosts:
           - alertmanager.fabrice.local
