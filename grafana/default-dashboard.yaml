@@ -411,7 +411,7 @@ data:
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.6.0",
+          "pluginVersion": "11.6.1",
           "targets": [
             {
               "datasource": {
@@ -501,7 +501,7 @@ data:
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.6.0",
+          "pluginVersion": "11.6.1",
           "targets": [
             {
               "datasource": {
@@ -569,7 +569,7 @@ data:
             },
             "viewMode": "list"
           },
-          "pluginVersion": "11.6.0",
+          "pluginVersion": "11.6.1",
           "title": "Alerts",
           "transparent": true,
           "type": "alertlist"
@@ -607,8 +607,8 @@ data:
                 "barAlignment": 0,
                 "barWidthFactor": 0.6,
                 "drawStyle": "line",
-                "fillOpacity": 5,
-                "gradientMode": "none",
+                "fillOpacity": 2,
+                "gradientMode": "opacity",
                 "hideFrom": {
                   "legend": false,
                   "tooltip": false,
@@ -616,7 +616,7 @@ data:
                 },
                 "insertNulls": false,
                 "lineInterpolation": "smooth",
-                "lineWidth": 3,
+                "lineWidth": 2,
                 "pointSize": 5,
                 "scaleDistribution": {
                   "type": "linear"
@@ -646,7 +646,24 @@ data:
                 ]
               }
             },
-            "overrides": []
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "total"
+                },
+                "properties": [
+                  {
+                    "id": "custom.lineWidth",
+                    "value": 1
+                  },
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 20
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 17,
@@ -676,7 +693,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "11.6.0",
+          "pluginVersion": "11.6.1",
           "targets": [
             {
               "datasource": {
@@ -691,6 +708,21 @@ data:
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sum (rate(container_cpu_usage_seconds_total{container!=\"\"}[$__rate_interval]))",
+              "format": "time_series",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "total",
+              "range": true,
+              "refId": "B"
             }
           ],
           "title": "Namespace CPU usage",
@@ -717,8 +749,8 @@ data:
                 "barAlignment": 0,
                 "barWidthFactor": 0.6,
                 "drawStyle": "line",
-                "fillOpacity": 15,
-                "gradientMode": "none",
+                "fillOpacity": 0,
+                "gradientMode": "opacity",
                 "hideFrom": {
                   "legend": false,
                   "tooltip": false,
@@ -726,7 +758,7 @@ data:
                 },
                 "insertNulls": false,
                 "lineInterpolation": "smooth",
-                "lineWidth": 1,
+                "lineWidth": 2,
                 "pointSize": 5,
                 "scaleDistribution": {
                   "type": "linear"
@@ -735,7 +767,7 @@ data:
                 "spanNulls": false,
                 "stacking": {
                   "group": "A",
-                  "mode": "normal"
+                  "mode": "none"
                 },
                 "thresholdsStyle": {
                   "mode": "dashed"
@@ -748,16 +780,29 @@ data:
                 "steps": [
                   {
                     "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 1000000000
                   }
                 ]
               },
               "unit": "bytes"
             },
-            "overrides": []
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "total"
+                },
+                "properties": [
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 20
+                  },
+                  {
+                    "id": "custom.lineWidth",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 17,
@@ -773,7 +818,7 @@ data:
               "url": "https://argocd.fabrice.local"
             }
           ],
-          "maxDataPoints": 240,
+          "maxDataPoints": 150,
           "options": {
             "legend": {
               "calcs": [],
@@ -787,7 +832,7 @@ data:
               "sort": "none"
             }
           },
-          "pluginVersion": "11.6.0",
+          "pluginVersion": "11.6.1",
           "targets": [
             {
               "datasource": {
@@ -799,6 +844,18 @@ data:
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "default-prometheus"
+              },
+              "editorMode": "code",
+              "expr": "sum (container_memory_usage_bytes{container!=\"\"})",
+              "hide": false,
+              "legendFormat": "total",
+              "range": true,
+              "refId": "B"
             }
           ],
           "title": "Namespace Memory usage",
@@ -821,5 +878,5 @@ data:
       "timezone": "",
       "title": "Default Dashboard",
       "uid": "default-dashboard",
-      "version": 2
+      "version": 1
     }
