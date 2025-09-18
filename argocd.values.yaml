@@ -1,6 +1,12 @@
+controller:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
 configs:
   params:
     server.insecure: true
+    timeout.reconciliation: 30s
 server:
   ingress:
     enabled: true
@@ -10,7 +16,7 @@ server:
       cert-manager.io/issuer: "my-ca-issuer"
     tls:
       - hosts:
-        - argocd.fabrice.local
+          - argocd.fabrice.local
         secretName: quickstart-example-tls
 notifications:
   argocdUrl: "https://argocd.fabrice.local/"
@@ -18,11 +24,13 @@ notifications:
     items:
       grafana-api-key: eyJrIjoiTUhwTmhXWlIxd2NYdlRLb0ZZQUFuWDl3SzNxeFJjbXIiLCJuIjoidGVzdCIsImlkIjoxfQ==
   notifiers:
-    service.grafana: |
-        apiUrl: http://grafana.grafana.svc/api
-        apiKey: $grafana-api-key
+    service.grafana:
+      |
+      apiUrl: http://grafana.grafana.svc/api
+      apiKey: $grafana-api-key
   templates:
-    template.app-deployed: |
+    template.app-deployed:
+      |
       email:
         subject: New version of an application {{.app.metadata.name}} is up and running.
       message: |
@@ -60,7 +68,8 @@ notifications:
             {{end}}
             ]
           }]
-    template.app-health-degraded: |
+    template.app-health-degraded:
+      |
       email:
         subject: Application {{.app.metadata.name}} has degraded.
       message: |
@@ -94,7 +103,8 @@ notifications:
             {{end}}
             ]
           }]
-    template.app-sync-failed: |
+    template.app-sync-failed:
+      |
       email:
         subject: Failed to sync application {{.app.metadata.name}}.
       message: |
@@ -128,7 +138,8 @@ notifications:
             {{end}}
             ]
           }]
-    template.app-sync-running: |
+    template.app-sync-running:
+      |
       email:
         subject: Start syncing application {{.app.metadata.name}}.
       message: |
@@ -162,7 +173,8 @@ notifications:
             {{end}}
             ]
           }]
-    template.app-sync-status-unknown: |
+    template.app-sync-status-unknown:
+      |
       email:
         subject: Application {{.app.metadata.name}} sync status is 'Unknown'
       message: |
@@ -201,7 +213,8 @@ notifications:
             {{end}}
             ]
           }]
-    template.app-sync-succeeded: |
+    template.app-sync-succeeded:
+      |
       email:
         subject: Application {{.app.metadata.name}} has been successfully synced.
       message: |
@@ -236,36 +249,43 @@ notifications:
             ]
           }]
   triggers:
-    trigger.on-deployed: |
+    trigger.on-deployed:
+      |
       - description: Application is synced and healthy. Triggered once per commit.
         oncePer: app.status.sync.revision
         send:
         - app-deployed
         when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
-    trigger.on-health-degraded: |
+    trigger.on-health-degraded:
+      |
       - description: Application has degraded
         send:
         - app-health-degraded
         when: app.status.health.status == 'Degraded'
-    trigger.on-sync-failed: |
+    trigger.on-sync-failed:
+      |
       - description: Application syncing has failed
         send:
         - app-sync-failed
         when: app.status.operationState.phase in ['Error', 'Failed']
-    trigger.on-sync-running: |
+    trigger.on-sync-running:
+      |
       - description: Application is being synced
         send:
         - app-sync-running
         when: app.status.operationState.phase in ['Running']
-    trigger.on-sync-status-unknown: |
+    trigger.on-sync-status-unknown:
+      |
       - description: Application status is 'Unknown'
         send:
         - app-sync-status-unknown
         when: app.status.sync.status == 'Unknown'
-    trigger.on-sync-succeeded: |
+    trigger.on-sync-succeeded:
+      |
       - description: Application syncing has succeeded
         send:
         - app-sync-succeeded
         when: app.status.operationState.phase in ['Succeeded']
-    defaultTriggers: |
+    defaultTriggers:
+      |
       - on-sync-status-unknown
