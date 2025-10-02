@@ -33,3 +33,5 @@ sidecar:
   dashboards:
     enabled: true
     label: grafana_dashboard
+image:
+  tag: 12.2.0
