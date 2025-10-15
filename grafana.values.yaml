@@ -30,8 +30,8 @@ sidecar:
   datasources:
     enabled: true
     label: grafana_datasource
-  dashboards:
-    enabled: true
-    label: grafana_dashboard
+  # dashboards:
+  #   enabled: true
+  #   label: grafana_dashboard
 image:
   tag: 12.2.0
