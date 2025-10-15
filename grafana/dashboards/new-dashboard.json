@@ -27,6 +27,31 @@
     "links": [],
     "panels": [
       {
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# Title\n\nFor markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)",
+          "mode": "markdown"
+        },
+        "pluginVersion": "12.2.0",
+        "title": "Test",
+        "type": "text"
+      },
+      {
         "datasource": {
           "type": "prometheus",
           "uid": "default-prometheus"
@@ -67,7 +92,7 @@
           "h": 20,
           "w": 24,
           "x": 0,
-          "y": 0
+          "y": 8
         },
         "id": 1,
         "options": {
