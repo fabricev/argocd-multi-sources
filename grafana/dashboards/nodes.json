@@ -53,13 +53,13 @@
                 "viz": false
               },
               "insertNulls": false,
-              "lineInterpolation": "linear",
+              "lineInterpolation": "smooth",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
               },
-              "showPoints": "auto",
+              "showPoints": "never",
               "showValues": false,
               "spanNulls": false,
               "stacking": {
@@ -302,8 +302,8 @@
       ]
     },
     "time": {
-      "from": "now-15m",
-      "to": "now"
+      "from": "2025-11-05T20:24:28.435Z",
+      "to": "2025-11-05T20:29:42.721Z"
     },
     "timepicker": {},
     "timezone": "browser",
