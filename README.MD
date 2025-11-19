@@ -14,7 +14,7 @@ metadata:
   name: github-multi-source-git-repo
   namespace: argocd
 data:
-  password: Z2l0aHViX3BhdF8xMUFCUE9DNlkwMEd6VEYybGNVR2RmX3VzR1M5T2REeUVzaThYQmlLbjZYaEtsT256RWV6YUQ3cGRNYlNvS3NFc0pLUE9FNFJSWHdJUzVjY0xU
+  password: Z2l0aHViX3BhdF8xMUFCUE9DNlkwdFltZjhHdkgxajBNX1Q1aWppemRWbXpOcEIydjN1YzVmNWN2bW1nazNOdHliTURvbVB2eUlYaURJUDVQRUlLVFIxTXBDUExN
   project: ZGVmYXVsdA==
   type: Z2l0
   url: aHR0cHM6Ly9naXRodWIuY29tL2ZhYnJpY2V2L2FyZ29jZC1tdWx0aS1zb3VyY2VzLmdpdA==
