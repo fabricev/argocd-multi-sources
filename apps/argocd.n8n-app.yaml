@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n
+  namespace: argocd
+spec:
+  destination:
+    namespace: n8n
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: n8n
+      repoURL: "https://community-charts.github.io/helm-charts"
+      targetRevision: 1.16.4
+      helm:
+        valueFiles:
+          - $values/n8n.values.yaml
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      ref: values
+    - repoURL: "https://github.com/fabricev/argocd-multi-sources.git"
+      targetRevision: HEAD
+      path: n8n/
+  syncPolicy:
+    automated:
+      {}
+    syncOptions:
+      - CreateNamespace=true

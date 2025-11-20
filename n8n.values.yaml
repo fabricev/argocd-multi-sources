@@ -1,0 +1,21 @@
+db:
+  type: postgresdb
+
+postgresql:
+  enabled: true
+
+  primary:
+    persistence:
+      existingClaim: "my-n8n-claim"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: n8n.fabrice.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - n8n.fabrice.local
+      secretName: quickstart-example-tls

@@ -7,6 +7,7 @@ configs:
   params:
     server.insecure: true
     timeout.reconciliation: 30s
+  cm:
     exec.enabled: "true"
 
 server:
