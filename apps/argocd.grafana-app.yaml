@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - chart: grafana-community/grafana
-      repoURL: "https://grafana-community.github.io/helm-charts"
+    - chart: grafana
+      repoURL: "ghcr.io/grafana-community/helm-charts/"
       targetRevision: 11.2.1
       helm:
         valueFiles:
